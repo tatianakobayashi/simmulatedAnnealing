@@ -56,7 +56,12 @@ def is_in_solution(node, solution):
 
 solution = list(nodes[:2])
 bestSolution = list(nodes)
-temperature = sys.maxint
+
+if sys.version_info.major < 3:
+    temperature = sys.maxint
+else:
+    temperature = sys.maxsize
+
 while temperature >= FINAL_TEMPERATURE or not viable(bestSolution):
     for it in range(SIZE):
         newSolution = solution
